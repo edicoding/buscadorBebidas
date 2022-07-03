@@ -5,7 +5,6 @@ const Bebida = ({ bebida }) => {
 	const { handleModalClick, handleBebidaIdClick } = useBebidas()
 
 	const handleClickBebida = () => {
-		handleModalClick()
 		handleBebidaIdClick(bebida.idDrink)
 	}
 

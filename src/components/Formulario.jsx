@@ -23,6 +23,12 @@ const Formulario = () => {
 		consultarBebida(busqueda).then(setBebidas)
 	}
 
+	const handleChange = e =>
+		setBusqueda({
+			...busqueda,
+			[e.target.name]: e.target.value,
+		})
+
 	return (
 		<Form onSubmit={handleSubmit}>
 			{alerta && (
@@ -42,12 +48,7 @@ const Formulario = () => {
 							placeholder='Ej: Tequila, Vodka, etc'
 							name='nombre'
 							value={busqueda.nombre}
-							onChange={e =>
-								setBusqueda({
-									...busqueda,
-									[e.target.name]: e.target.value,
-								})
-							}
+							onChange={handleChange}
 						/>
 					</Form.Group>
 				</Col>
@@ -59,12 +60,7 @@ const Formulario = () => {
 							id='categoria'
 							name='categoria'
 							value={busqueda.categoria}
-							onChange={e =>
-								setBusqueda({
-									...busqueda,
-									[e.target.name]: e.target.value,
-								})
-							}
+							onChange={handleChange}
 						>
 							<option>- Selecciona Categoria -</option>
 							{categorias.map(categoria => (
