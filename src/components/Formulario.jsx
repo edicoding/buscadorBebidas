@@ -10,7 +10,7 @@ const Formulario = () => {
 	})
 	const [alerta, setAlerta] = useState('')
 	const { categorias } = useCategorias()
-	const { consultarBebida, setBebidas } = useBebidas()
+	const { consultarBebida, bebidas, setBebidas } = useBebidas()
 
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -76,7 +76,8 @@ const Formulario = () => {
 				</Col>
 			</Row>
 
-			<Row className='justify-content-end'>
+			<Row className='justify-content-between'>
+				<Col md={3}>{bebidas.length > 0 && <h3>Última Búsqueda</h3>}</Col>
 				<Col md={3}>
 					<Button
 						variant='danger'

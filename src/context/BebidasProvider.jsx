@@ -10,6 +10,15 @@ const BebidasProvider = ({ children }) => {
 	const [receta, setReceta] = useState({})
 
 	useEffect(() => {
+		const bebidasLS = JSON.parse(localStorage.getItem('bebidas')) || []
+		setBebidas(bebidasLS)
+	}, [])
+
+	useEffect(() => {
+		localStorage.setItem('bebidas', JSON.stringify(bebidas))
+	}, [bebidas])
+
+	useEffect(() => {
 		if (!bebidaId) return
 		obtenerReceta(bebidaId).then(setReceta)
 	}, [bebidaId])
