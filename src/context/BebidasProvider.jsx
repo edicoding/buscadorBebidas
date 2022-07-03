@@ -8,6 +8,7 @@ const BebidasProvider = ({ children }) => {
 	const [modal, setModal] = useState(false)
 	const [bebidaId, setBebidaId] = useState(null)
 	const [receta, setReceta] = useState({})
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		const bebidasLS = JSON.parse(localStorage.getItem('bebidas')) || []
@@ -20,7 +21,10 @@ const BebidasProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (!bebidaId) return
-		obtenerReceta(bebidaId).then(setReceta)
+		obtenerReceta(bebidaId).then(receta => {
+			setReceta(receta)
+			setLoading(false)
+		})
 	}, [bebidaId])
 
 	const handleModalClick = () => {
@@ -29,6 +33,7 @@ const BebidasProvider = ({ children }) => {
 	}
 
 	const handleBebidaIdClick = id => {
+		setLoading(true)
 		setModal(true)
 		setBebidaId(id)
 	}
@@ -51,6 +56,7 @@ const BebidasProvider = ({ children }) => {
 				modal,
 				handleBebidaIdClick,
 				receta,
+				loading,
 			}}
 		>
 			{children}
