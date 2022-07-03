@@ -25,6 +25,14 @@ const BebidasProvider = ({ children }) => {
 		setBebidaId(id)
 	}
 
+	// const handleModalClick = useCallback(() => {
+	// 	setModal(modal => !modal)
+	// }, [])
+
+	// const handleBebidaIdClick = useCallback(id => {
+	// 	setBebidaId(id)
+	// }, [])
+
 	return (
 		<BebidasContext.Provider
 			value={{
